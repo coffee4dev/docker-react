@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t coffee4whale/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true coffee4whale/docker-react npm run test
